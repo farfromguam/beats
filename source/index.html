@@ -1,0 +1,71 @@
+<!-- <!DOCTYPE html> -->
+<html>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg4everybody/2.1.8/svg4everybody.legacy.js" ></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style-min.css">
+  <body>
+
+    <div ng-app="clockApp" ng-controller="clockCtrl">
+
+      <h1 ng-click="beat.advance_beat()">
+        advance_beat
+      </h1>
+
+      {{beat.pulse}}
+
+
+      <article class="clock">
+        <div class="face-container">
+          <div class="face">
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 100 100"
+            >
+              <defs>
+                <g id="deciday" style="stroke: black;" stroke-width="3  ">
+                  <line y1=" 40" y2=" 50" />
+                  <line y1="-40" y2="-50" />
+                </g>
+                <g id="twenny" style="stroke: black;" stroke-width="2">
+                  <line y1=" 47" y2=" 50" />
+                  <line y1="-47" y2="-50" />
+                </g>
+              </defs>
+              <g
+                transform="translate(50 50)"
+              >
+                <use
+                  xlink:href="#deciday"
+                  ng-repeat="x in clock.face.deciday.markings"
+                  transform="rotate({{x}})"
+                />
+                <use
+                  xlink:href="#twenny"
+                  ng-repeat="x in clock.face.twenny.markings"
+                  transform="rotate({{x}})"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+
+        <div
+          ng-repeat="(key, value) in clock.hands"
+          ng-attr-class="hand-container {{value.name}}-container"
+        >
+          <div
+            ng-class="value.name"
+            ng-attr-style="value.style()"
+          ></div>
+        </div>
+
+
+      </article>
+    </div>
+  </body>
+</html>

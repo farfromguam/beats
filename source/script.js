@@ -1,7 +1,8 @@
-var app = angular.module("clock", []);
-app.controller("clockCtrl", function($scope, $rootScope) {
-  var day_duration = 60 * 60 * 24
-  var beat_duration = day_duration / 1000
+angular.module("clockApp", [])
+
+.controller("clockCtrl", function($scope) {
+  var day_duration = 60 * 60 * 24;
+  var beat_duration = day_duration / 1000;
 
   $scope.clock = {
     face: {
@@ -24,7 +25,7 @@ app.controller("clockCtrl", function($scope, $rootScope) {
         name: "beat",
         rotate: false,
         orientation: function() {
-          return (Math.floor($scope.beat.pulse / 20) * 2) * 3.6 + 180
+          return (Math.floor($scope.beat.pulse / 20) * 2) * 3.6 + 180;
         },
       },
       twenny: { // Twenty Beats / 1/50th of a day / about 30 minutes
@@ -32,11 +33,11 @@ app.controller("clockCtrl", function($scope, $rootScope) {
         name: "twenny",
         rotate: false,
         orientation: function() {
-          return (($scope.beat.pulse % 20) * 5) * 3.6 + 180
+          return (($scope.beat.pulse % 20) * 5) * 3.6 + 180;
         },
       }
     }
-  }
+  };
 
 
   $scope.beat = {
@@ -47,7 +48,7 @@ app.controller("clockCtrl", function($scope, $rootScope) {
       return b * 86.4;
     },
     elapsed_seconds: function() {
-      var date = new Date;
+      var date = new Date();
       return date.getSeconds() + (date.getMinutes() * 60) + (date.getHours() * 3600);
     },
     raw_value: function() {
@@ -64,30 +65,30 @@ app.controller("clockCtrl", function($scope, $rootScope) {
       $scope.$broadcast('beat', beat);
     },
     advance_beat: function() {
-      console.log('advance_beat')
+      console.log('advance_beat');
       $scope.beat.set_beat($scope.beat.pulse + 1);
     },
     init: function() {
       // set initial beat
       // console.log("attention");
-      $scope.beat.set_beat($scope.beat.value())
+      $scope.beat.set_beat($scope.beat.value());
       // calculate when next beat will be
-      var time_now_in_seconds  = $scope.beat.elapsed_seconds()
-      var next_beat_in_seconds = $scope.beat.beat_to_second($scope.beat.next_whole_beat())
-      var seconds_until_next_beat = next_beat_in_seconds - time_now_in_seconds
+      var time_now_in_seconds  = $scope.beat.elapsed_seconds();
+      var next_beat_in_seconds = $scope.beat.beat_to_second($scope.beat.next_whole_beat());
+      var seconds_until_next_beat = next_beat_in_seconds - time_now_in_seconds;
       // set the next beat at the correct time, then schedule the updapte
       // console.log("march in " + Math.floor(seconds_until_next_beat) );
       setTimeout(function() {
         // console.log("march");
-        $scope.beat.advance_beat()
+        $scope.beat.advance_beat();
         setInterval(function() {
           // var direction = $scope.beat.pulse % 2 == 0 ? "left" : "right"
           // console.log(direction);
-          $scope.beat.advance_beat()
+          $scope.beat.advance_beat();
         }, beat_duration * 1000);
       }, seconds_until_next_beat * 1000 );
     }
-  }
+  };
 
   function orient_hand(hand) {
     var hand_element = document.querySelectorAll('.' + hand.name + '-container');
@@ -96,8 +97,8 @@ app.controller("clockCtrl", function($scope, $rootScope) {
   }
 
   function orient_hands() {
-    orient_hand($scope.clock.hands.beat)
-    orient_hand($scope.clock.hands.twenny)
+    orient_hand($scope.clock.hands.beat);
+    orient_hand($scope.clock.hands.twenny);
   }
 
   function init() {
@@ -109,10 +110,12 @@ app.controller("clockCtrl", function($scope, $rootScope) {
 
     // Lay down the beats
     setTimeout(function() {
-      $scope.beat.init()
+      $scope.beat.init();
     }, 100 );
-  };
-  init()
+
+    svg4everybody();
+  }
+  init();
 
 
 });

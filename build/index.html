@@ -1,18 +1,21 @@
 <!-- <!DOCTYPE html> -->
 <html>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg4everybody/2.1.8/svg4everybody.legacy.js" ></script>
   <script src="script.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style-min.css">
   <body>
 
-    <div ng-app="clock" ng-controller="clockCtrl">
+    <div ng-app="clockApp" ng-controller="clockCtrl">
 
       <h1 ng-click="beat.advance_beat()">
-      advance_beat
+        advance_beat
       </h1>
 
       {{beat.pulse}}
+
 
       <article class="clock">
         <div class="face-container">
