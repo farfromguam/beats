@@ -13,6 +13,9 @@
   transition: transform 0.2s cubic-bezier(.4,2.08,.55,.44);
 }
 
+svg {
+  border: 1px solid red;
+}
 .beat {
   background: black;
   width: 2.5%;

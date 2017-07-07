@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg">
 
-  <symbol id="beaker" viewBox="0 0 182.6 792">
+  <symbol id="beaker" viewBox="0 0 100 792">
     <title>original-file's-title</title>
     <desc>original-file's-desc</desc>
     <circle cx="344.8" cy="20.2" r="20.2"/>
@@ -18,6 +18,20 @@
     c0,8,4,16,4,16s-4,8-4,16l16-10c7.3,0,15.7,3.3,25.4,5.9C40.3,65,39,69.5,39,74l16.8-9.3c2,0.2,4.1,0.3,6.2,0.3
     c19,0,34.5-10.5,36.5-12.5S100.5,49.5,98.5,47.5z M85.5,50c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5
     C88,48.9,86.9,50,85.5,50z"/>
+  </symbol>
+
+  <symbol id="hanger" viewBox="0 0 100 100">
+    <title>original-file's-title</title>
+    <desc>original-file's-desc</desc>
+     <rect x="35" y="0" width="30" height="100"/>
+      <svg  stroke-width="3">
+        <line y1="0" y2="50" style="stroke: green;"/>
+        <line y1="50" y2="100" style="stroke: blue;"/>
+        <line x1="100" x2="100" y1="0" y2="50" style="stroke: blue;"/>
+        <line  x1="100" x2="100" y1="50" y2="100" style="stroke: green;"/>
+        <line x1="0" x2="100" style="stroke: orange;"/>
+        <line y1="100" y2="100" x1="0" x2="100" style="stroke: purple;"/>
+      </svg>
   </symbol>
 
 </svg>

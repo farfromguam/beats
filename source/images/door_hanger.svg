@@ -1,0 +1,25 @@
+<svg
+  id="Layer_1"
+  data-name="Layer 1"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 36.81 144.81"
+>
+  <defs>
+    <style>
+      .cls-1{
+        fill:#fff;
+        stroke:#000;
+        stroke-miterlimit:10;
+        stroke-width:0.81px;
+      }
+    </style>
+  </defs>
+  <title>
+    door_hanger
+  </title>
+  <path
+    class="cls-1"
+    d="M180.5,72.5v144h36V72.5Zm18,135a9,9,0,1,1,9-9A9,9,0,0,1,198.5,207.5Z"
+    transform="translate(-180.09 -70)"
+  />
+</svg>

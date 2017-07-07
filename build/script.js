@@ -7,7 +7,7 @@ angular.module("clockApp", [])
   $scope.clock = {
     face: {
       deciday: {
-        markings: [0, 36, 72, 108, 144],
+        markings: [0, 36, 72, 108, 144, 180, 216, 252, 288, 324],
       },
       twenny: {
         markings: [

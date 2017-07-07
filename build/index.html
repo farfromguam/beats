@@ -16,8 +16,15 @@
 
       {{beat.pulse}}
 
-      <svg class="icon"><use xlink:href="images/spritemap.svg#beaker" /></svg>
-      <svg class="icon"><use xlink:href="images/spritemap.svg#fish" /></svg>
+      <svg class="icon">
+        <use xlink:href="images/spritemap.svg#beaker" />
+      </svg>
+      <svg class="icon">
+        <use xlink:href="images/spritemap.svg#fish" />
+      </svg>
+      <svg class="icon">
+        <use xlink:href="images/spritemap.svg#hanger" />
+      </svg>
 
       <article class="clock">
         <div class="face-container">
@@ -37,14 +44,21 @@
                   <line y1="-47" y2="-50" />
                 </g>
               </defs>
+
+
+              <g transform="translate(50, 0)">
+                <use
+                  width="10%"
+                  height="10%"
+                  xlink:href="images/spritemap.svg#hanger"
+                  ng-repeat="x in clock.face.deciday.markings"
+                  transform="rotate({{x}}, 0, 50)"
+                />
+              </g>
+
               <g
                 transform="translate(50 50)"
               >
-                <use
-                  xlink:href="#deciday"
-                  ng-repeat="x in clock.face.deciday.markings"
-                  transform="rotate({{x}})"
-                />
                 <use
                   xlink:href="#twenny"
                   ng-repeat="x in clock.face.twenny.markings"
