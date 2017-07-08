@@ -93,35 +93,41 @@ angular.module("clockApp", [])
 
   $scope.items = [
     {
-      name: "images/spritemap.svg#hanger",
+      name: "images/spritemap.svg#dash",
       rotational_placement: "0", // measured in beats
       size: "10",                 // percent
       radius: 100,
     },
     {
-      name: "images/spritemap.svg#hanger",
+      name: "images/spritemap.svg#dash",
       rotational_placement: "10", // measured in beats
       size: "10",                 // percent
       radius: 100,
     },
     {
-      name: "images/spritemap.svg#hanger",
-      rotational_placement: "20", // measured in beats
-      size: "10",                 // percent
+      name: "images/spritemap.svg#dot",
+      rotational_placement: "2", // measured in beats
+      size: "3",                 // percent
       radius: 100,
     },
     {
-      name: "images/spritemap.svg#hanger",
-      rotational_placement: "30", // measured in beats
-      size: "10",                 // percent
+      name: "images/spritemap.svg#dot",
+      rotational_placement: "4", // measured in beats
+      size: "3",                 // percent
       radius: 100,
     },
     {
-      name: "images/spritemap.svg#hanger",
-      rotational_placement: "40", // measured in beats
-      size: "10",                 // percent
+      name: "images/spritemap.svg#dot",
+      rotational_placement: "6", // measured in beats
+      size: "3",                 // percent
       radius: 100,
-    }
+    },
+    {
+      name: "images/spritemap.svg#dot",
+      rotational_placement: "8", // measured in beats
+      size: "3",                 // percent
+      radius: 100,
+    },
   ]
 
 
