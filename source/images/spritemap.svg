@@ -24,14 +24,14 @@
     <title>original-file's-title</title>
     <desc>original-file's-desc</desc>
      <rect x="35" y="0" width="30" height="100"/>
-      <svg  stroke-width="3">
+      <!-- <svg  stroke-width="3">
         <line y1="0" y2="50" style="stroke: green;"/>
         <line y1="50" y2="100" style="stroke: blue;"/>
         <line x1="100" x2="100" y1="0" y2="50" style="stroke: blue;"/>
         <line  x1="100" x2="100" y1="50" y2="100" style="stroke: green;"/>
         <line x1="0" x2="100" style="stroke: orange;"/>
         <line y1="100" y2="100" x1="0" x2="100" style="stroke: purple;"/>
-      </svg>
+      </svg> -->
   </symbol>
 
     <symbol id="dot" viewBox="0 0 100 100">

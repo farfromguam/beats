@@ -16,12 +16,12 @@
 
       {{beat.pulse}}
 
-      <svg class="icon">
+      <!-- <svg class="icon">
         <use xlink:href="images/spritemap.svg#beaker" />
       </svg>
       <svg class="icon">
         <use xlink:href="images/spritemap.svg#dash" />
-      </svg>
+      </svg> -->
 
       <article class="clock">
         <div class="face-container">
@@ -35,19 +35,18 @@
             >
 
 
+              <line y2="-100" style="stroke: #00a0e0;"/> c
+              <line x2="100" style="stroke: #e3007e;"/> m
+              <line y2="100" style="stroke: #ffec00;"/> y
+              <line x2="-100" style="stroke: #1d1d1b;"/> k
+
+
+               <!-- d="M #{120} #{startY} A 1 1 0 #{largeArcFlag} 1 #{endX} #{endY} L 0 0" -->
                 <path
-                  d="M 1 0 A 1 1 0 1 1 0.7044187975826124 -0.7097845853583089 L 0 0"
+                  ng-attr-d="M {{beat_to_x(300)}} {{beat_to_y(300)}} A 1 1 0 1 1 {{beat_to_x(600)}} {{beat_to_y(600)}} L 0 0"
                   fill="#18BC9C"
                 >
                 </path>
-
-
-        <line y2="-100" style="stroke: green;"/>
-        <line y2="100" style="stroke: green;"/>
-        <line x2="100" style="stroke: orange;"/>
-        <line x2="-100" style="stroke: purple;"/>
-
-
 
 
                 <g ng-repeat="item in items">
@@ -67,35 +66,12 @@
                 </g>
 
 
-
-
-
-              <!-- <g ng-repeat="item in items">
-                <g ng-attr-transform="rotate({{item.rotational_placement * 3.6}}, 50, 50)">
-                  <g ng-attr-transform="translate(0, {{item.radius / 2}})">
-                    <g ng-attr-transform="translate({{50 + (item.size / 2)}}, 50)"> -->
-                      <use
-
-                        ng-attr-width="10%"
-                        ng-attr-height="10%"
-                        xlink:href="images/spritemap.svg#beaker"
-                      />
-                    <!-- </g>
-                  </g>
-                </g>
-              </g> -->
-
-
-
-
-
-
             </svg>
           </div>
         </div>
 
 
-        <!-- <div
+        <div
           ng-repeat="(key, value) in clock.hands"
           ng-attr-class="hand-container {{value.name}}-container"
         >
@@ -103,7 +79,7 @@
             ng-class="value.name"
             ng-attr-style="value.style()"
           ></div>
-        </div> -->
+        </div>
 
 
       </article>

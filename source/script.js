@@ -55,7 +55,7 @@ angular.module("clockApp", [])
       $scope.$broadcast('beat', beat);
     },
     advance_beat: function() {
-      console.log('advance_beat');
+      // console.log('advance_beat');
       $scope.beat.set_beat($scope.beat.pulse + 1);
     },
     init: function() {
@@ -101,8 +101,15 @@ angular.module("clockApp", [])
 //   const x = Math.cos(2 * Math.PI * beat);
 //   const y = Math.sin(2 * Math.PI * beat);
 //   return [x, y];
-// }
+// },
 
+$scope.beat_to_x = function(beat) {
+  return Math.cos(2 * Math.PI * beat);
+},
+
+$scope.beat_to_y = function(beat) {
+  return Math.sin(2 * Math.PI * beat);
+},
 
 
 // const percent = 0.12;
@@ -138,7 +145,6 @@ angular.module("clockApp", [])
     { beat: 700, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
     { beat: 800, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
     { beat: 900, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-
     { beat: 20, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
     { beat: 40, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
     { beat: 60, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
@@ -147,27 +153,27 @@ angular.module("clockApp", [])
     { beat: 120, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
     { beat: 140, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
     { beat: 180, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 160, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-  ];
+    { beat: 160, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 }
+  ]
 
 
 
-  // function orient_hand(hand) {
-  //   var hand_element = document.querySelectorAll('.' + hand.name + '-container');
-  //   hand_element[0].style.webkitTransform = 'rotateZ('+ hand.orientation() +'deg)';
-  //   hand_element[0].style.transform       = 'rotateZ('+ hand.orientation() +'deg)';
-  // }
-  //
-  // function orient_hands() {
-  //   orient_hand($scope.clock.hands.beat);
-  //   orient_hand($scope.clock.hands.twenny);
-  // }
+  function orient_hand(hand) {
+    var hand_element = document.querySelectorAll('.' + hand.name + '-container');
+    hand_element[0].style.webkitTransform = 'rotateZ('+ hand.orientation() +'deg)';
+    hand_element[0].style.transform       = 'rotateZ('+ hand.orientation() +'deg)';
+  }
+
+  function orient_hands() {
+    orient_hand($scope.clock.hands.beat);
+    orient_hand($scope.clock.hands.twenny);
+  }
 
   function init() {
     // orient_hands whenever there is a beat announced
     $scope.$on('beat', function (event, data) {
       console.log("beat " + data);
-      // return orient_hands();
+      return orient_hands();
     });
 
     // Lay down the beats
