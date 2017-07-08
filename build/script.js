@@ -90,6 +90,42 @@ angular.module("clockApp", [])
     }
   };
 
+
+  $scope.items = [
+    {
+      name: "images/spritemap.svg#hanger",
+      rotational_placement: "0", // measured in beats
+      size: "10",                 // percent
+      radius: 100,
+    },
+    {
+      name: "images/spritemap.svg#hanger",
+      rotational_placement: "10", // measured in beats
+      size: "10",                 // percent
+      radius: 100,
+    },
+    {
+      name: "images/spritemap.svg#hanger",
+      rotational_placement: "20", // measured in beats
+      size: "10",                 // percent
+      radius: 100,
+    },
+    {
+      name: "images/spritemap.svg#hanger",
+      rotational_placement: "30", // measured in beats
+      size: "10",                 // percent
+      radius: 100,
+    },
+    {
+      name: "images/spritemap.svg#hanger",
+      rotational_placement: "40", // measured in beats
+      size: "10",                 // percent
+      radius: 100,
+    }
+  ]
+
+
+
   function orient_hand(hand) {
     var hand_element = document.querySelectorAll('.' + hand.name + '-container');
     hand_element[0].style.webkitTransform = 'rotateZ('+ hand.orientation() +'deg)';
