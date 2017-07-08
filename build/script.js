@@ -1,3 +1,7 @@
+/*global angular:true */
+/*global console:true */
+
+
 angular.module("clockApp", [])
 
 .controller("clockCtrl", function($scope) {
@@ -5,20 +9,6 @@ angular.module("clockApp", [])
   var beat_duration = day_duration / 1000;
 
   $scope.clock = {
-    face: {
-      deciday: {
-        markings: [0, 36, 72, 108, 144, 180, 216, 252, 288, 324],
-      },
-      twenny: {
-        markings: [
-            0,   7.2,  14.4,  21.6,  28.8,
-           36,  43.2,  50.4,  57.6,  64.8,
-           72,  79.2,  86.4,  93.6, 100.8,
-          108, 115.2, 122.4, 129.6, 136.8,
-          144, 151.2, 158.4, 165.6, 172.8
-        ],
-      },
-    },
     hands: {
       beat: {
         abb: "bt",
@@ -91,63 +81,93 @@ angular.module("clockApp", [])
   };
 
 
+      // face: {
+      //   deciday: {
+      //     markings: [0, 36, 72, 108, 144, 180, 216, 252, 288, 324],
+      //   },
+      //   twenny: {
+      //     markings: [
+      //         0,   7.2,  14.4,  21.6,  28.8,
+      //        36,  43.2,  50.4,  57.6,  64.8,
+      //        72,  79.2,  86.4,  93.6, 100.8,
+      //       108, 115.2, 122.4, 129.6, 136.8,
+      //       144, 151.2, 158.4, 165.6, 172.8
+      //     ],
+      //   },
+      // },
+
+
+// function beat_to_coordinates(beat) {
+//   const x = Math.cos(2 * Math.PI * beat);
+//   const y = Math.sin(2 * Math.PI * beat);
+//   return [x, y];
+// }
+
+
+
+// const percent = 0.12;
+//
+// const startX = getCoordinatesForPercent(0)[0];
+// const startY = getCoordinatesForPercent(0)[1];
+// const endX = getCoordinatesForPercent(percent)[0];
+// const endY = getCoordinatesForPercent(percent)[1];
+//
+// const largeArcFlag = percent > .5 ? 1 : 0;
+//
+// const pathData = [
+//   `M ${startX} ${startY}`,
+//   `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
+//   `L 0 0`,
+// ].join(' ');
+
+
+
+
+
+
+
+
   $scope.items = [
-    {
-      name: "images/spritemap.svg#dash",
-      rotational_placement: "0", // measured in beats
-      size: "10",                 // percent
-      radius: 100,
-    },
-    {
-      name: "images/spritemap.svg#dash",
-      rotational_placement: "10", // measured in beats
-      size: "10",                 // percent
-      radius: 100,
-    },
-    {
-      name: "images/spritemap.svg#dot",
-      rotational_placement: "2", // measured in beats
-      size: "3",                 // percent
-      radius: 100,
-    },
-    {
-      name: "images/spritemap.svg#dot",
-      rotational_placement: "4", // measured in beats
-      size: "3",                 // percent
-      radius: 100,
-    },
-    {
-      name: "images/spritemap.svg#dot",
-      rotational_placement: "6", // measured in beats
-      size: "3",                 // percent
-      radius: 100,
-    },
-    {
-      name: "images/spritemap.svg#dot",
-      rotational_placement: "8", // measured in beats
-      size: "3",                 // percent
-      radius: 100,
-    },
-  ]
+    { beat:   0, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 100, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 200, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 300, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 400, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 500, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 600, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 700, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 800, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+    { beat: 900, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
+
+    { beat: 20, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 40, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 60, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 80, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 100, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 120, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 140, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 180, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+    { beat: 160, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
+  ];
 
 
 
-  function orient_hand(hand) {
-    var hand_element = document.querySelectorAll('.' + hand.name + '-container');
-    hand_element[0].style.webkitTransform = 'rotateZ('+ hand.orientation() +'deg)';
-    hand_element[0].style.transform       = 'rotateZ('+ hand.orientation() +'deg)';
-  }
-
-  function orient_hands() {
-    orient_hand($scope.clock.hands.beat);
-    orient_hand($scope.clock.hands.twenny);
-  }
+  // function orient_hand(hand) {
+  //   var hand_element = document.querySelectorAll('.' + hand.name + '-container');
+  //   hand_element[0].style.webkitTransform = 'rotateZ('+ hand.orientation() +'deg)';
+  //   hand_element[0].style.transform       = 'rotateZ('+ hand.orientation() +'deg)';
+  // }
+  //
+  // function orient_hands() {
+  //   orient_hand($scope.clock.hands.beat);
+  //   orient_hand($scope.clock.hands.twenny);
+  // }
 
   function init() {
     // orient_hands whenever there is a beat announced
     $scope.$on('beat', function (event, data) {
       console.log("beat " + data);
-      return orient_hands();
+      // return orient_hands();
     });
 
     // Lay down the beats
@@ -155,7 +175,6 @@ angular.module("clockApp", [])
       $scope.beat.init();
     }, 100 );
 
-    svg4everybody();
   }
   init();
 
