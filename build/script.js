@@ -92,6 +92,27 @@ angular.module("clockApp", [])
     { beat: 1000 / 24 * 12, text: "12", size: 28, radius: 55 },
     { beat: 1000 / 24 * 13, text: "13", size: 28, radius: 55 },
     { beat: 1000 / 24 * 14, text: "14", size: 28, radius: 55 },
+
+    { beat: 300, text: "🍴", size: 70, radius: 70 },
+    { beat: 400, text: "🍴", size: 70, radius: 70 },
+    { beat: 500, text: "🍴", size: 70, radius: 70 },
+    { beat: 600, text: "🍴", size: 70, radius: 70 },
+    { beat: 700, text: "🍴", size: 70, radius: 70 },
+
+    { beat: 310, text: "🍅", size: 35, radius: 35 },
+    { beat: 330, text: "🍅", size: 35, radius: 35 },
+    { beat: 350, text: "🍅", size: 35, radius: 35 },
+    { beat: 367, text: "🍅", size: 35, radius: 35 },
+
+    { beat: 410, text: "🍅", size: 35, radius: 35 },
+    { beat: 430, text: "🍅", size: 35, radius: 35 },
+    { beat: 450, text: "🍅", size: 35, radius: 35 },
+    { beat: 470, text: "🍅", size: 35, radius: 35 },
+
+    { beat: 530, text: "🍅", size: 35, radius: 35 },
+    { beat: 550, text: "🍅", size: 35, radius: 35 },
+    { beat: 570, text: "🍅", size: 35, radius: 35 },
+    { beat: 590, text: "🍅", size: 35, radius: 35 },
   ];
 
   $scope.pies = [
