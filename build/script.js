@@ -7,6 +7,7 @@ angular.module("clockApp", [])
 .controller("clockCtrl", function($scope) {
   var day_duration = 60 * 60 * 24;
   var beat_duration = day_duration / 1000;
+  $scope.Math = Math;
 
   $scope.clock = {
     hands: {
@@ -81,58 +82,12 @@ angular.module("clockApp", [])
   };
 
 
-      // face: {
-      //   deciday: {
-      //     markings: [0, 36, 72, 108, 144, 180, 216, 252, 288, 324],
-      //   },
-      //   twenny: {
-      //     markings: [
-      //         0,   7.2,  14.4,  21.6,  28.8,
-      //        36,  43.2,  50.4,  57.6,  64.8,
-      //        72,  79.2,  86.4,  93.6, 100.8,
-      //       108, 115.2, 122.4, 129.6, 136.8,
-      //       144, 151.2, 158.4, 165.6, 172.8
-      //     ],
-      //   },
-      // },
 
 
-// function beat_to_coordinates(beat) {
-//   const x = Math.cos(2 * Math.PI * beat);
-//   const y = Math.sin(2 * Math.PI * beat);
-//   return [x, y];
-// },
-
-$scope.beat_to_x = function(beat) {
-  return Math.cos(2 * Math.PI * beat);
-},
-
-$scope.beat_to_y = function(beat) {
-  return Math.sin(2 * Math.PI * beat);
-},
-
-
-// const percent = 0.12;
-//
-// const startX = getCoordinatesForPercent(0)[0];
-// const startY = getCoordinatesForPercent(0)[1];
-// const endX = getCoordinatesForPercent(percent)[0];
-// const endY = getCoordinatesForPercent(percent)[1];
-//
-// const largeArcFlag = percent > .5 ? 1 : 0;
-//
-// const pathData = [
-//   `M ${startX} ${startY}`,
-//   `A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}`,
-//   `L 0 0`,
-// ].join(' ');
-
-
-
-
-
-
-
+  $scope.pies = [
+    { start: 300, end: 600, radius: 60, color:"yellow"},
+    { start: 900, end: 200, radius: 60, color:"grey"}
+  ];
 
   $scope.items = [
     { beat:   0, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
@@ -154,7 +109,7 @@ $scope.beat_to_y = function(beat) {
     { beat: 140, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
     { beat: 180, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
     { beat: 160, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 }
-  ]
+  ];
 
 
 
@@ -180,7 +135,6 @@ $scope.beat_to_y = function(beat) {
     setTimeout(function() {
       $scope.beat.init();
     }, 100 );
-
   }
   init();
 

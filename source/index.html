@@ -15,6 +15,7 @@
       </h1>
 
       {{beat.pulse}}
+      <p>{{pie}}</p>
 
       <!-- <svg class="icon">
         <use xlink:href="images/spritemap.svg#beaker" />
@@ -40,14 +41,27 @@
               <line y2="100" style="stroke: #ffec00;"/> y
               <line x2="-100" style="stroke: #1d1d1b;"/> k
 
-
-               <!-- d="M #{120} #{startY} A 1 1 0 #{largeArcFlag} 1 #{endX} #{endY} L 0 0" -->
-                <path
-                  ng-attr-d="M {{beat_to_x(300)}} {{beat_to_y(300)}} A 1 1 0 1 1 {{beat_to_x(600)}} {{beat_to_y(600)}} L 0 0"
-                  fill="#18BC9C"
-                >
-                </path>
-
+                <g ng-repeat="pie in pies">
+                  <g ng-attr-transform="rotate(90)">
+                    <path
+                      ng-attr-d="
+                      M
+                      {{ (Math.cos(Math.PI * 2 * (pie.start/1000) )) * pie.radius }}
+                      {{ (Math.sin(Math.PI * 2 * (pie.start/1000) )) * pie.radius }}
+                      A
+                      {{pie.radius}}
+                      {{pie.radius}}
+                      0
+                      {{ (pie.start - pie.end) > 500 ? 1 : 0}}
+                      1
+                      {{ (Math.cos(Math.PI * 2 * (pie.end/1000) )) * pie.radius }}
+                      {{ (Math.sin(Math.PI * 2 * (pie.end/1000) )) * pie.radius }}
+                      L 0 0"
+                      ng-attr-fill="{{pie.color}}"
+                    >
+                    </path>
+                  </g>
+                </g>
 
                 <g ng-repeat="item in items">
                   <g ng-attr-transform="rotate({{item.beat * .36}})">
