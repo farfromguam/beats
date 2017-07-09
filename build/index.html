@@ -41,44 +41,67 @@
               <line y2="100" style="stroke: #ffec00;"/> y
               <line x2="-100" style="stroke: #1d1d1b;"/> k
 
-                <g ng-repeat="pie in pies">
-                  <g ng-attr-transform="rotate(90)">
-                    <path
-                      ng-attr-d="
-                      M
-                      {{ (Math.cos(Math.PI * 2 * (pie.start/1000) )) * pie.radius }}
-                      {{ (Math.sin(Math.PI * 2 * (pie.start/1000) )) * pie.radius }}
-                      A
-                      {{pie.radius}}
-                      {{pie.radius}}
-                      0
-                      {{ (pie.start - pie.end) > 500 ? 1 : 0}}
-                      1
-                      {{ (Math.cos(Math.PI * 2 * (pie.end/1000) )) * pie.radius }}
-                      {{ (Math.sin(Math.PI * 2 * (pie.end/1000) )) * pie.radius }}
-                      L 0 0"
-                      ng-attr-fill="{{pie.color}}"
-                    >
-                    </path>
-                  </g>
+              <g ng-repeat="pie in pies">
+                <g ng-attr-transform="rotate(90)">
+                  <path
+                    ng-attr-d="
+                    M
+                    {{ (Math.cos(Math.PI * 2 * (pie.start/1000) )) * pie.radius }}
+                    {{ (Math.sin(Math.PI * 2 * (pie.start/1000) )) * pie.radius }}
+                    A
+                    {{pie.radius}}
+                    {{pie.radius}}
+                    0
+                    {{ ((pie.start - pie.end) * -1) > 500 ? 1 : 0}}
+                    1
+                    {{ (Math.cos(Math.PI * 2 * (pie.end/1000) )) * pie.radius }}
+                    {{ (Math.sin(Math.PI * 2 * (pie.end/1000) )) * pie.radius }}
+                    L 0 0"
+                    ng-attr-fill="{{pie.color}}"
+                  >
+                  </path>
                 </g>
+              </g>
 
-                <g ng-repeat="item in items">
-                  <g ng-attr-transform="rotate({{item.beat * .36}})">
-                    <g ng-attr-transform="translate(0, {{item.radius}})">
-                      <g ng-attr-transform="translate({{(item.size)}}, 0)">
-                        <use
-                          ng-attr-transform="rotate(180)"
-                          ng-attr-width="{{item.size}}%"
-                          ng-attr-height="{{item.size}}%"
-                          xlink:href=""
-                          ng-attr-xlink:href="{{item.name}}"
-                        />
-                      </g>
+              <g ng-repeat="item in items">
+                <g ng-attr-transform="rotate({{item.beat * .36}})">
+                  <g ng-attr-transform="translate(0, {{item.radius}})">
+                    <g ng-attr-transform="translate({{(item.size)}}, 0)">
+                      <use
+                        ng-attr-transform="rotate(180)"
+                        ng-attr-width="{{item.size}}%"
+                        ng-attr-height="{{item.size}}%"
+                        xlink:href=""
+                        ng-attr-xlink:href="{{item.name}}"
+                      />
                     </g>
                   </g>
                 </g>
+              </g>
 
+              <!-- <defs>
+                <path id="MyPath" d="M 1000 80 L -1000 80" />
+              </defs>
+              <use xlink:href="#MyPath" fill="none" stroke="red"  />
+              <text>
+                <textPath xlink:href="#MyPath">
+                  We go up, then we go down, then up again
+                </textPath>
+              </text> -->
+
+              <g ng-repeat="label in labels">
+                <g ng-attr-transform="rotate({{label.beat * .36}})">
+                  <g ng-attr-transform="translate(0, {{label.radius}})">
+                    <text
+                      font-size="{{label.size}}%"
+                      text-anchor="middle"
+                      ng-attr-transform="rotate(180)"
+                    >
+                      {{label.text}}
+                    </text>
+                  </g>
+                </g>
+              </g>
 
             </svg>
           </div>
