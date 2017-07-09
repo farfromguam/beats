@@ -84,18 +84,18 @@ angular.module("clockApp", [])
 
 
   $scope.labels = [
-    { beat: 1000 / 24 * 7, text: "SEVEN", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 8, text: "08", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 9, text: "09", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 10, text: "10", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 11, text: "11", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 12, text: "12", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 13, text: "13", size: 20, radius: 70 },
-    { beat: 1000 / 24 * 14, text: "TWO", size: 20, radius: 70 },
+    { beat: 1000 / 24 * 7, text: "07", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 8, text: "08", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 9, text: "09", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 10, text: "10", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 11, text: "11", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 12, text: "12", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 13, text: "13", size: 28, radius: 55 },
+    { beat: 1000 / 24 * 14, text: "14", size: 28, radius: 55 },
   ];
 
   $scope.pies = [
-    { start: 300, end: 600, radius: 60, color:"#fad541"},
+    { start: 300, end: 600, radius: 65, color:"#fad541"},
     { start: 800, end: 900, radius: 60, color:"#AEB6BF"},
     { start: 900, end: 200, radius: 60, color:"#5D6D7E"}
   ];
