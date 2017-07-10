@@ -14,8 +14,7 @@
         advance_beat
       </h1>
 
-      {{beat.pulse}}
-      <p>{{pie}}</p>
+      <p>{{beat}}</p>
 
       <!-- <svg class="icon">
         <use xlink:href="images/spritemap.svg#beaker" />
@@ -101,6 +100,18 @@
                     >
                       {{label.text}}
                     </text>
+                  </g>
+                </g>
+              </g>
+
+              <g ng-if="beat">
+                <g ng-attr-transform="rotate({{beat.pulse * .36}})">
+                  <g ng-attr-transform="translate(-5, -10)">
+                    <rect
+                      width="10"
+                      height="45"
+                      style="fill:rgb(0,0,255)"
+                    />
                   </g>
                 </g>
               </g>
