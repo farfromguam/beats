@@ -36,10 +36,11 @@
             >
 
 
-              <line y2="-100" style="stroke: #00a0e0;"/> c
-              <line x2="100" style="stroke: #e3007e;"/> m
-              <line y2="100" style="stroke: #ffec00;"/> y
-              <line x2="-100" style="stroke: #1d1d1b;"/> k
+              <!-- CMYK AXIS GUIDES -->
+              <!-- <line y2="-100" style="stroke: #00a0e0;"/>
+              <line x2="100" style="stroke: #e3007e;"/>
+              <line y2="100" style="stroke: #ffec00;"/>
+              <line x2="-100" style="stroke: #1d1d1b;"/> -->
 
               <g ng-repeat="pie in pies">
                 <g ng-attr-transform="rotate(90)">
@@ -63,7 +64,7 @@
                 </g>
               </g>
 
-              <g ng-repeat="item in items">
+              <g ng-repeat="item in svgs">
                 <g ng-attr-transform="rotate({{item.beat * .36}})">
                   <g ng-attr-transform="translate(0, {{item.radius}})">
                     <g ng-attr-transform="translate({{(item.size)}}, 0)">
@@ -96,7 +97,7 @@
                       font-size="{{label.size}}%"
                       text-anchor="middle"
                       ng-attr-transform="rotate(180)"
-                      font-family="Helvetica"
+                      font-family="impact"
                     >
                       {{label.text}}
                     </text>

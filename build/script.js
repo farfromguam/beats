@@ -1,5 +1,7 @@
+
 /*global angular:true */
 /*global console:true */
+/*global _:true */
 
 
 angular.module("clockApp", [])
@@ -7,7 +9,16 @@ angular.module("clockApp", [])
 .controller("clockCtrl", function($scope) {
   var day_duration = 60 * 60 * 24;
   var beat_duration = day_duration / 1000;
-  $scope.Math = Math;
+  $scope.Math   = Math;
+  $scope.labels = [];
+  $scope.svgs   = [];
+  $scope.pies   = [
+    { start: 300, end: 600, radius: 200, color:"#fad541"},
+    { start: 800, end: 900, radius: 200, color:"#AEB6BF"},
+    { start: 900, end: 200, radius: 200, color:"#5D6D7E"}
+  ];
+
+
 
   $scope.clock = {
     hands: {
@@ -82,69 +93,6 @@ angular.module("clockApp", [])
   };
 
 
-
-  $scope.labels = [
-    { beat: 1000 / 24 * 7, text: "07", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 8, text: "08", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 9, text: "09", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 10, text: "10", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 11, text: "11", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 12, text: "12", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 13, text: "13", size: 28, radius: 55 },
-    { beat: 1000 / 24 * 14, text: "14", size: 28, radius: 55 },
-
-    { beat: 300, text: "🍴", size: 70, radius: 70 },
-    { beat: 400, text: "🍴", size: 70, radius: 70 },
-    { beat: 500, text: "🍴", size: 70, radius: 70 },
-    { beat: 600, text: "🍴", size: 70, radius: 70 },
-    { beat: 700, text: "🍴", size: 70, radius: 70 },
-
-    { beat: 310, text: "🍅", size: 35, radius: 35 },
-    { beat: 330, text: "🍅", size: 35, radius: 35 },
-    { beat: 350, text: "🍅", size: 35, radius: 35 },
-    { beat: 367, text: "🍅", size: 35, radius: 35 },
-
-    { beat: 410, text: "🍅", size: 35, radius: 35 },
-    { beat: 430, text: "🍅", size: 35, radius: 35 },
-    { beat: 450, text: "🍅", size: 35, radius: 35 },
-    { beat: 470, text: "🍅", size: 35, radius: 35 },
-
-    { beat: 530, text: "🍅", size: 35, radius: 35 },
-    { beat: 550, text: "🍅", size: 35, radius: 35 },
-    { beat: 570, text: "🍅", size: 35, radius: 35 },
-    { beat: 590, text: "🍅", size: 35, radius: 35 },
-  ];
-
-  $scope.pies = [
-    { start: 300, end: 600, radius: 65, color:"#fad541"},
-    { start: 800, end: 900, radius: 60, color:"#AEB6BF"},
-    { start: 900, end: 200, radius: 60, color:"#5D6D7E"}
-  ];
-
-  $scope.items = [
-    { beat:   0, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 100, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 200, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 300, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 400, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 500, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 600, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 700, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 800, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 900, name: "images/spritemap.svg#dash", size: "5", radius: 50 },
-    { beat: 20, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 40, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 60, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 80, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 100, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 120, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 140, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 180, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 },
-    { beat: 160, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 }
-  ];
-
-
-
   function orient_hand(hand) {
     var hand_element = document.querySelectorAll('.' + hand.name + '-container');
     hand_element[0].style.webkitTransform = 'rotateZ('+ hand.orientation() +'deg)';
@@ -155,6 +103,58 @@ angular.module("clockApp", [])
     orient_hand($scope.clock.hands.beat);
     orient_hand($scope.clock.hands.twenny);
   }
+
+
+
+
+  // create 24 hour markings
+  _.each(_.range(24), function(hour) {
+    $scope.labels.push(
+      { beat: 1000 / 24 * hour, text: hour, size: 24, radius: 53 }
+    );
+    return;
+  });
+
+
+  // Add Swiss Clock markings
+  _.each(_.range(1000), function(beat) {
+    if (beat % 100 === 0) {
+      $scope.svgs.push(
+        { beat: beat, name: "images/spritemap.svg#dash", size: "5", radius: 50 }
+      );
+      return;
+    } else if (beat % 20 === 0) {
+      $scope.svgs.push(
+        { beat: beat, name: "images/spritemap.svg#dot", size: "1.5", radius: 50 }
+      );
+      return;
+    } else {
+      return;
+    }
+  });
+
+
+  // add work pomodoro times
+  // TODO fix: 370 displays odd...
+  var pomodoros = [310, 330, 350, 370, 410, 430, 450, 470, 530, 550, 570, 590];
+  _.each(pomodoros, function(beat) {
+    $scope.labels.push(
+      { beat: beat, text: "🍅", size: 40, radius: 80 }
+    );
+  });
+
+
+  // add ideal meal times
+  var meals = [300, 400, 500, 600, 700];
+  _.each(meals, function(beat) {
+    $scope.labels.push(
+      { beat: beat, text: "🍴", size: 70, radius: 25 }
+    );
+  });
+
+
+
+
 
   function init() {
     // orient_hands whenever there is a beat announced
