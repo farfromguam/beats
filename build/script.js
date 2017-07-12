@@ -12,12 +12,8 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
   $scope.Math = Math;
   $scope.labels = [];
   $scope.svgs = [];
-  // $scope.pies   = [
-  //   { start: 300, end: 600, radius: 200, color:"#fad541"},
-  //   { start: 800, end: 900, radius: 200, color:"#AEB6BF"},
-  //   { start: 900, end: 200, radius: 200, color:"#5D6D7E"}
-  // ];
-
+  $scope.pies = [{ start: 300, end: 600, radius: 200, color: "#fad541" }, { start: 800, end: 900, radius: 200, color: "#AEB6BF" }, { start: 900, end: 200, radius: 200, color: "#5D6D7E" }];
+  $scope.legends = [{ start: 300, radius: 55, text: "work" }, { start: 800, radius: 55, text: "relax" }, { start: 900, radius: 55, text: "sleep" }];
 
   $scope.clock = {
     hands: {
@@ -25,6 +21,7 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
         abb: "bt",
         name: "beat",
         rotate: false,
+        beat: 400,
         orientation: function orientation() {
           return Math.floor($scope.beat.pulse / 20) * 2 * 3.6 + 180;
         }
@@ -101,11 +98,14 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
     orient_hand($scope.clock.hands.twenny);
   }
 
-  // create 24 hour markings
-  _.each(_.range(24), function (hour) {
-    $scope.labels.push({ beat: 1000 / 24 * hour, text: hour, size: 24, radius: 53 });
-    return;
-  });
+  // // create 24 hour markings
+  // _.each(_.range(24), hour => {
+  //   $scope.labels.push(
+  //     { beat: 1000 / 24 * hour, text: hour, size: 24, radius: 53 }
+  //   );
+  //   return;
+  // });
+
 
   // Add Swiss Clock markings
   _.each(_.range(1000), function (beat) {
@@ -120,17 +120,23 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
     }
   });
 
-  // add work pomodoro times
-  var pomodoros = [310, 330, 350, 370, 410, 430, 450, 470, 530, 550, 570, 590];
-  _.each(pomodoros, function (beat) {
-    $scope.labels.push({ beat: beat, text: "🍅", size: 40, radius: 80 });
-  });
+  // // add work pomodoro times
+  // const pomodoros = [310, 330, 350, 370, 410, 430, 450, 470, 530, 550, 570, 590];
+  // _.each(pomodoros, beat => {
+  //   $scope.labels.push(
+  //     { beat, text: "🍅", size: 40, radius: 80 }
+  //   );
+  // });
 
-  // add ideal meal times
-  var meals = [300, 400, 500, 600, 700];
-  _.each(meals, function (beat) {
-    $scope.labels.push({ beat: beat, text: "🍴", size: 70, radius: 25 });
-  });
+
+  // // add ideal meal times
+  // const meals = [300, 400, 500, 600, 700];
+  // _.each(meals, beat => {
+  //   $scope.labels.push(
+  //     { beat, text: "🍴", size: 70, radius: 25 }
+  //   );
+  // });
+
 
   function init() {
     // orient_hands whenever there is a beat announced

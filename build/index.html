@@ -10,17 +10,14 @@
 
     <div ng-app="clockApp" ng-controller="clockCtrl">
 
-      <h1 ng-click="beat.advance_beat()">
+      <!-- <h1 ng-click="beat.advance_beat()">
         advance_beat
       </h1>
 
-      <p>{{beat}}</p>
+      <p>{{clock.hands.beat.beat}}</p> -->
 
       <!-- <svg class="icon">
         <use xlink:href="images/spritemap.svg#beaker" />
-      </svg>
-      <svg class="icon">
-        <use xlink:href="images/spritemap.svg#dash" />
       </svg> -->
 
       <article class="clock">
@@ -40,6 +37,7 @@
               <line x2="100" style="stroke: #e3007e;"/>
               <line y2="100" style="stroke: #ffec00;"/>
               <line x2="-100" style="stroke: #1d1d1b;"/> -->
+
 
               <g ng-repeat="pie in pies">
                 <g ng-attr-transform="rotate(90)">
@@ -63,31 +61,6 @@
                 </g>
               </g>
 
-              <g ng-repeat="item in svgs">
-                <g ng-attr-transform="rotate({{item.beat * .36}})">
-                  <g ng-attr-transform="translate(0, {{item.radius}})">
-                    <g ng-attr-transform="translate({{(item.size)}}, 0)">
-                      <use
-                        ng-attr-transform="rotate(180)"
-                        ng-attr-width="{{item.size}}%"
-                        ng-attr-height="{{item.size}}%"
-                        xlink:href=""
-                        ng-attr-xlink:href="{{item.name}}"
-                      />
-                    </g>
-                  </g>
-                </g>
-              </g>
-
-              <!-- <defs>
-                <path id="MyPath" d="M 1000 80 L -1000 80" />
-              </defs>
-              <use xlink:href="#MyPath" fill="none" stroke="red"  />
-              <text>
-                <textPath xlink:href="#MyPath">
-                  We go up, then we go down, then up again
-                </textPath>
-              </text> -->
 
               <g ng-repeat="label in labels">
                 <g ng-attr-transform="rotate({{label.beat * .36}})">
@@ -104,8 +77,42 @@
                 </g>
               </g>
 
-              <g ng-if="beat">
-                <g ng-attr-transform="rotate({{beat.pulse * .36}})">
+
+              <g ng-repeat="item in svgs">
+                <g ng-attr-transform="rotate({{item.beat * .36}})">
+                  <g ng-attr-transform="translate(0, {{item.radius}})">
+                    <g ng-attr-transform="translate({{(item.size)}}, 0)">
+                      <use
+                        ng-attr-transform="rotate(180)"
+                        ng-attr-width="{{item.size}}%"
+                        ng-attr-height="{{item.size}}%"
+                        xlink:href=""
+                        ng-attr-xlink:href="{{item.name}}"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+
+
+              <g ng-repeat="legend in legends"
+                <g ng-attr-transform="rotate( {{(legend.start * .36) + 3}} )">
+                  <defs>
+                    <path id="curve" d="M 0 {{legend.radius}} A {{legend.radius}} {{legend.radius}} 0 1 1 0 -{{legend.radius}} L 0 0"/>
+                  </defs>
+                  <text font-family="Helvetica" font-size="7" font-weight="900" fill="black">
+                    <textPath xlink:href="#curve">
+                      {{legend.text}}
+                    </textPath>
+                  </text>
+                </g>
+              </g>
+
+
+
+              <!-- NON WORKING SVG HANDS -->
+              <!-- <g ng-if="beat">
+                <g ng-attr-transform="rotate({{clock.hands.beat.beat * .36}})">
                   <g ng-attr-transform="translate(-5, -10)">
                     <rect
                       width="10"
@@ -114,7 +121,7 @@
                     />
                   </g>
                 </g>
-              </g>
+              </g> -->
 
             </svg>
           </div>

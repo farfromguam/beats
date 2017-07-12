@@ -15,21 +15,21 @@
 
 .beat {
   background: black;
-  width: 2.5%;
-  height: 40%;
+  width: 1.5%;
+  height: 20%;
   position: absolute;
-  left: 48.75%;
-  top: 22%;
+  left: 49.25%;
+  top: 35%;
   transform-origin: 50% 71%;
 }
 
 .twenny {
   background: red;
-  width: 1%;
-  height: 50%;
+  width: .5%;
+  height: 28%;
   position: absolute;
-  left: 49.5%;
-  top: 15%;
+  left: 49.75%;
+  top: 30%;
   transform-origin: 50% 71%;
   z-index: 8;
 }
