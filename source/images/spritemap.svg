@@ -41,5 +41,10 @@
     </symbol>
 
 
+    <symbol id="pomodoro" viewBox="0 0 100 100">
+      <title>original-file's-title</title>
+      <desc>original-file's-desc</desc>
+      <circle cx="50" cy="50" r="50"/>
+    </symbol>
 
 </svg>

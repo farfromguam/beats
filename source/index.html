@@ -88,6 +88,7 @@
                         ng-attr-height="{{item.size}}%"
                         xlink:href=""
                         ng-attr-xlink:href="{{item.name}}"
+                        fill="{{item.fill}}"
                       />
                     </g>
                   </g>
@@ -95,7 +96,7 @@
               </g>
 
 
-              <g ng-repeat="legend in legends"
+              <g ng-repeat="legend in legends">
                 <g ng-attr-transform="rotate( {{(legend.start * .36) + 3}} )">
                   <defs>
                     <path id="curve" d="M 0 {{legend.radius}} A {{legend.radius}} {{legend.radius}} 0 1 1 0 -{{legend.radius}} L 0 0"/>
@@ -108,6 +109,39 @@
                 </g>
               </g>
 
+
+              <g ng-repeat="meeting in meetings">
+                <g ng-attr-transform="rotate( 90 )">
+                  <path
+                    fill="{{meeting.fill}}"
+                    d="
+                      M
+                        {{ (Math.cos(Math.PI * 2 * (meeting.start/1000) )) * (meeting.radius + meeting.weight) }}
+                        {{ (Math.sin(Math.PI * 2 * (meeting.start/1000) )) * (meeting.radius + meeting.weight) }}
+                      A
+                        {{ meeting.radius + meeting.weight }}
+                        {{ meeting.radius + meeting.weight }}
+                        0
+                        0
+                        1
+                        {{ (Math.cos(Math.PI * 2 * (meeting.end/1000) )) * (meeting.radius + meeting.weight) }}
+                        {{ (Math.sin(Math.PI * 2 * (meeting.end/1000) )) * (meeting.radius + meeting.weight) }}
+                      L
+                        {{ (Math.cos(Math.PI * 2 * (meeting.end/1000) )) * meeting.radius }}
+                        {{ (Math.sin(Math.PI * 2 * (meeting.end/1000) )) * meeting.radius }}
+                      A
+                        {{ meeting.radius }}
+                        {{ meeting.radius }}
+                        0
+                        0
+                        0
+                        {{ (Math.cos(Math.PI * 2 * (meeting.start/1000) )) * meeting.radius }}
+                        {{ (Math.sin(Math.PI * 2 * (meeting.start/1000) )) * meeting.radius }}
+                      Z
+                    "
+                  />
+                </g>
+              </g>
 
 
               <!-- NON WORKING SVG HANDS -->

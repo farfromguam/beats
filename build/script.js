@@ -15,6 +15,11 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
   $scope.pies = [{ start: 300, end: 600, radius: 200, color: "#fad541" }, { start: 800, end: 900, radius: 200, color: "#AEB6BF" }, { start: 900, end: 200, radius: 200, color: "#5D6D7E" }];
   $scope.legends = [{ start: 300, radius: 55, text: "work" }, { start: 800, radius: 55, text: "relax" }, { start: 900, radius: 55, text: "sleep" }];
 
+  $scope.meetings = [
+  // TODO get below working
+  // { start: $scope.beat.hour_to_beat(9), end: 500, radius: 65, weight: 5},
+  { start: 375, end: 400, radius: 65, weight: 5, fill: "DARKORANGE" }, { start: 540, end: 600, radius: 65, weight: 5, fill: "DARKORANGE" }];
+
   $scope.clock = {
     hands: {
       beat: {
@@ -38,18 +43,21 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
   };
 
   $scope.beat = {
+    hour_to_beat: function hour_to_beat(h) {
+      return 1000 / 24 * h;
+    },
     second_to_beat: function second_to_beat(s) {
       return s / 86.4;
     },
     beat_to_second: function beat_to_second(b) {
       return b * 86.4;
     },
-    elapsed_seconds: function elapsed_seconds() {
-      var date = new Date();
+    elapsed_seconds: function elapsed_seconds(date) {
       return date.getSeconds() + date.getMinutes() * 60 + date.getHours() * 3600;
     },
     raw_value: function raw_value() {
-      return $scope.beat.second_to_beat($scope.beat.elapsed_seconds()).toFixed(2);
+      var current_time = new Date();
+      return $scope.beat.second_to_beat($scope.beat.elapsed_seconds(current_time)).toFixed(2);
     },
     value: function value() {
       return Math.floor($scope.beat.raw_value());
@@ -101,7 +109,7 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
   // // create 24 hour markings
   // _.each(_.range(24), hour => {
   //   $scope.labels.push(
-  //     { beat: 1000 / 24 * hour, text: hour, size: 24, radius: 53 }
+  //     { beat: 1000 / 24 * hour, text: hour, size: 30, radius: 45 }
   //   );
   //   return;
   // });
@@ -120,23 +128,35 @@ angular.module("clockApp", []).controller("clockCtrl", function ($scope) {
     }
   });
 
-  // // add work pomodoro times
-  // const pomodoros = [310, 330, 350, 370, 410, 430, 450, 470, 530, 550, 570, 590];
-  // _.each(pomodoros, beat => {
-  //   $scope.labels.push(
-  //     { beat, text: "🍅", size: 40, radius: 80 }
-  //   );
-  // });
+  // add car Emojis
+  var cars = [280, 620];
+  _.each(cars, function (beat) {
+    $scope.labels.push({ beat: beat, text: "🚗", size: 40, radius: 55 });
+  });
 
+  // add work pomodoro times
+  var pomodoros = [310, 330, 350, 370, 410, 430, 450, 470, 530, 550, 570, 590];
+  _.each(pomodoros, function (beat) {
+    $scope.svgs.push({
+      beat: beat,
+      name: "images/spritemap.svg#pomodoro",
+      size: "2.5",
+      radius: 80,
+      fill: "ORANGERED"
+    });
+  });
 
-  // // add ideal meal times
-  // const meals = [300, 400, 500, 600, 700];
-  // _.each(meals, beat => {
-  //   $scope.labels.push(
-  //     { beat, text: "🍴", size: 70, radius: 25 }
-  //   );
-  // });
-
+  // add ideal meal times
+  var meals = [300, 400, 500, 600, 700];
+  _.each(meals, function (beat) {
+    $scope.svgs.push({
+      beat: beat,
+      name: "images/spritemap.svg#pomodoro",
+      size: "3.5",
+      radius: 30,
+      fill: "OLIVEDRAB"
+    });
+  });
 
   function init() {
     // orient_hands whenever there is a beat announced
